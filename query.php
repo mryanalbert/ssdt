@@ -62,28 +62,28 @@ class Query
 
     $pk = 'id';
 
-    $cols = array(
-      array('db' => 'id', 'dt' => 0),
-      array('db' => 'name',  'dt' => 1),
-      array('db' => 'email',   'dt' => 2),
-      array(
+    $cols = [
+      ['db' => 'id', 'dt' => 0],
+      ['db' => 'name',  'dt' => 1],
+      ['db' => 'email',   'dt' => 2],
+      [
         'db' => 'created_at',
         'dt' => 3,
         'formatter' => function ($d, $row) {
           return date('M d, Y', strtotime($d));
         }
-      ),
-      array('db' => 'post',   'dt' => 4),
-      array(
+      ],
+      ['db' => 'post', 'dt' => 4],
+      [
         'db' => 'id',
         'dt' => 5,
         'formatter' => function ($d, $row) {
           return <<<EOD
-            <a href="#" class="btn btn-primary">View</a>
+            <a href="#" class="btn btn-primary" id="{$row['id']}">View</a>
           EOD;
         }
-      ),
-    );
+      ],
+    ];
 
     return $this->ssdt($table, $pk, $cols);
   }

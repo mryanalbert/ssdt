@@ -50,7 +50,7 @@
           }).nodes();
 
           if (rows.length === 0) {
-            $('#no-data').show()
+            $('#no-data').removeClass('d-none')
           } else {
             $('#users-table-wrapper').removeClass('d-none')
           }
